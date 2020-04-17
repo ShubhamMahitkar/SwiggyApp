@@ -17,7 +17,7 @@
 
       <li class="nav-item active">
 
-        <a class="nav-link" href="{% url 'open_state' %}">State <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'open_state' %}">State <span class="sr-only"></span></a>
 
       </li>
 
@@ -25,7 +25,7 @@
 
        <li class="nav-item active">
 
-        <a class="nav-link" href="{% url 'open_city' %}">City <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'open_city' %}">City <span class="sr-only"></span></a>
 
       </li>
 
@@ -33,7 +33,7 @@
 
          <li class="nav-item active">
 
-        <a class="nav-link" href="{% url 'open_area' %}">Area <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'open_area' %}">Area <span class="sr-only"></span></a>
 
       </li>
 
@@ -41,13 +41,22 @@
 
          <li class="nav-item active">
 
-        <a class="nav-link" href="{% url 'open_type' %}">Type <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'open_type' %}">Type <span class="sr-only"></span></a>
 
       </li>
 
-         <li class="nav-item active">
+         <li class="nav-item dropdown">
 
-        <a class="nav-link" href="#">Restaurant <span class="sr-only">(current)</span></a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Restaurant
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'show_approved_res' %}">Approved</a>
+          <a class="dropdown-item" href="{% url 'show_pending_res' %}">Pending</a>
+          <a class="dropdown-item" href="{% url 'show_cancel_res' %}">Cancel</a>
+          <a class="dropdown-item" href="#">Send Message</a>
+          <a class="dropdown-item" href="#">View Message</a>
+        </div>
 
       </li>
 

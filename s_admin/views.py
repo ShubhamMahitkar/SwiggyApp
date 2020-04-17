@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect
 from s_admin.forms import *
 from s_admin.models import *
 from s_admin.models import AdminLoginModel
+from restaurant.models import RestaurantModel
 
 
 def admin_login(request):
@@ -164,3 +165,30 @@ def delete_type(request):
     sno = request.GET.get('sno')
     RestaurantTypeModel.objects.filter(no=sno).delete()
     return redirect('open_type')
+
+
+def pending_res(request):
+    rs = RestaurantModel.objects.filter(restro_status='pending')
+    return render(request,"s_admin/pending_res.html",{"data":rs})
+
+
+def approve_res(request):
+    rno = request.GET.get("rno")
+    RestaurantModel.objects.filter(restro_id=rno).update(restro_status='approved')
+    return redirect('admin_home')
+
+
+def cancel_res(request):
+    rno = request.GET.get("rno")
+    RestaurantModel.objects.filter(restro_id=rno).update(restro_status='cancel')
+    return redirect('admin_home')
+
+
+def show_approved_res(request):
+    rs = RestaurantModel.objects.filter(restro_status='approved')
+    return render(request, "s_admin/approved_res.html", {"data": rs})
+
+
+def show_cancel_res(request):
+    rs = RestaurantModel.objects.filter(restro_status='cancel')
+    return render(request, "s_admin/cancel_res.html", {"data": rs})

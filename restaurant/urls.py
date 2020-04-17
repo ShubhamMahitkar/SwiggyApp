@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from restaurant import views
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('admin/', include("s_admin.urls"))
+    path('', views.showMain, name="restro"),
+    path('register/', views.registerPage, name="register"),
+    path('save_res/', views.save_res, name="save_res"),
 ]
